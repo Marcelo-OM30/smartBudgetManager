@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Budget Manager - Registro</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="register-container">
+        <h1>Crie sua conta</h1>
+        <form id="registerForm">
+            <input type="text" id="registerName" placeholder="Seu nome" required>
+            <input type="text" id="registerEmail" placeholder="E-mail" required>
+            <input type="password" id="registerPassword" placeholder="Senha" required>
+            <input type="password" id="registerPasswordConfirm" placeholder="Confirme a senha" required>
+            <div class="photo-upload">
+                <label for="registerPhoto">Foto de perfil (opcional):</label>
+                <input type="file" id="registerPhoto" accept="image/*">
+                <div id="photoPreview" style="margin-top: 10px; text-align: center;"></div>
+            </div>
+            <button type="submit">Registrar</button>
+        </form>
+        <p>Já tem conta? <a href="index.html">Faça login</a></p>
+    </div>
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

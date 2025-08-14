@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Budget Manager - Editar Perfil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="user-profile">
+            <img id="userPhoto"
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjUiIGN5PSIyNSIgcj0iMjUiIGZpbGw9IiNlMGU3ZWYiLz4KPHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDEyQzE0LjIwOTEgMTIgMTYgMTAuMjA5MSAxNiA4QzE2IDUuNzkwODYgMTQuMjA5MSA0IDEyIDRDOS43OTA4NiA0IDggNS43OTA4NiA4IDhDOCAxMC4yMDkxIDkuNzkwODYgMTIgMTIgMTJaIiBmaWxsPSIjNDQ0Ii8+CjxwYXRoIGQ9Ik0xMiAxNEM5LjMzIDEzLjk4IDYuNjcgMTQuMjEgNSAxNS4zM0M0LjMgMTUuNzEgNCAxNi41IDQgMTcuMzNWMjBIMjBWMTcuMzNDMjAgMTYuNSAxOS43IDE1LjcxIDE5IDE1LjMzQzE3LjMzIDE0LjIxIDE0LjY3IDEzLjk4IDEyIDE0WiIgZmlsbD0iIzQ0NCIvPgo8L3N2Zz4KPC9zdmc+"
+                alt="Foto do usuário">
+            <div>
+                <h1><i class="fa-solid fa-user-edit"></i> Editar Perfil</h1>
+                <div class="user-greeting" id="userGreeting">Olá, Usuário!</div>
+            </div>
+        </div>
+        <div class="header-actions">
+            <a href="dashboard.html" class="profile-link"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
+            <button onclick="logoutUser()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+        </div>
+    </header>
+    <main>
+        <section id="profile">
+            <h2><i class="fa-solid fa-user"></i> Meu Perfil</h2>
+            <div class="profile-content">
+                <div class="current-profile">
+                    <img id="currentProfilePhoto" src="" alt="Foto atual" class="profile-photo-large">
+                    <div class="profile-info">
+                        <p><strong>Nome:</strong> <span id="currentName">-</span></p>
+                        <p><strong>Email:</strong> <span id="currentEmail">-</span></p>
+                    </div>
+                </div>
+                <form id="profileForm" class="profile-edit-form">
+                    <h3>Editar Perfil</h3>
+                    <input type="text" id="editName" placeholder="Seu nome">
+                    <div class="photo-upload">
+                        <label for="editPhoto">Alterar foto de perfil:</label>
+                        <input type="file" id="editPhoto" accept="image/*">
+                        <div id="editPhotoPreview" style="margin-top: 10px; text-align: center;"></div>
+                    </div>
+                    <button type="submit">Salvar Alterações</button>
+                    <button type="button" onclick="window.location.href='dashboard.html'"
+                        style="background: #666; margin-top: 10px;">Cancelar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Carregar dados do usuário na página de perfil
+        document.addEventListener('DOMContentLoaded', function () {
+            // Verificar se usuário está logado
+            const loggedUser = localStorage.getItem('loggedUser');
+            if (!loggedUser) {
+                alert('Você precisa estar logado para acessar esta página!');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            loadUserProfile();
+
+            // Preview da foto de edição
+            document.getElementById('editPhoto').addEventListener('change', function (e) {
+                const file = e.target.files[0];
+                const preview = document.getElementById('editPhotoPreview');
+
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        preview.innerHTML = `<img src="${e.target.result}" class="photo-preview" alt="Preview">`;
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.innerHTML = '';
+                }
+            });
+
+            // Formulário de edição de perfil
+            document.getElementById('profileForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const name = document.getElementById('editName').value.trim();
+                const photoFile = document.getElementById('editPhoto').files[0];
+
+                if (!name && !photoFile) {
+                    alert('Preencha o nome ou selecione uma foto para atualizar.');
+                    return;
+                }
+
+                if (photoFile) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        updateUserProfile(name, e.target.result);
+                        // Redirecionar para dashboard após salvar
+                        setTimeout(() => {
+                            window.location.href = 'dashboard.html';
+                        }, 1000);
+                    };
+                    reader.readAsDataURL(photoFile);
+                } else {
+                    updateUserProfile(name, null);
+                    // Redirecionar para dashboard após salvar
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1000);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

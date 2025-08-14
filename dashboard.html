@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Budget Manager - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="user-profile">
+            <img id="userPhoto"
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjUiIGN5PSIyNSIgcj0iMjUiIGZpbGw9IiNlMGU3ZWYiLz4KPHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDEyQzE0LjIwOTEgMTIgMTYgMTAuMjA5MSAxNiA4QzE2IDUuNzkwODYgMTQuMjA5MSA0IDEyIDRDOS43OTA4NiA0IDggNS43OTA4NiA4IDhDOCAxMC4yMDkxIDkuNzkwODYgMTIgMTIgMTJaIiBmaWxsPSIjNDQ0Ii8+CjxwYXRoIGQ9Ik0xMiAxNEM5LjMzIDEzLjk4IDYuNjcgMTQuMjEgNSAxNS4zM0M0LjMgMTUuNzEgNCAxNi41IDQgMTcuMzNWMjBIMjBWMTcuMzNDMjAgMTYuNSAxOS43IDE1LjcxIDE5IDE1LjMzQzE3LjMzIDE0LjIxIDE0LjY3IDEzLjk4IDEyIDE0WiIgZmlsbD0iIzQ0NCIvPgo8L3N2Zz4KPC9zdmc+"
+                alt="Foto do usuário">
+            <div>
+                <h1><i class="fa-solid fa-wallet"></i> Smart Budget Manager</h1>
+                <div class="user-greeting" id="userGreeting">Olá, Usuário!</div>
+            </div>
+        </div>
+        <div class="header-actions">
+            <a href="profile.html" class="profile-link"><i class="fa-solid fa-user-edit"></i> Editar Perfil</a>
+            <button onclick="logoutUser()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+        </div>
+    </header>
+    <main>
+        <section id="summary">
+            <h2><i class="fa-solid fa-chart-pie"></i> Resumo Financeiro</h2>
+            <div id="summaryData">
+                <div class="summary-card income">
+                    <div class="summary-label">
+                        <i class="fa-solid fa-arrow-up summary-icon"></i>
+                        Total de Receitas
+                    </div>
+                    <div class="summary-value" id="totalIncome">R$ 0,00</div>
+                </div>
+                <div class="summary-card expense">
+                    <div class="summary-label">
+                        <i class="fa-solid fa-arrow-down summary-icon"></i>
+                        Total de Despesas
+                    </div>
+                    <div class="summary-value" id="totalExpense">R$ 0,00</div>
+                </div>
+                <div class="summary-card balance">
+                    <div class="summary-label">
+                        <i class="fa-solid fa-wallet summary-icon"></i>
+                        Saldo Atual
+                    </div>
+                    <div class="summary-value" id="currentBalance">R$ 0,00</div>
+                </div>
+            </div>
+        </section>
+        <section id="transactions">
+            <h2><i class="fa-solid fa-exchange-alt"></i> Transações</h2>
+            <div class="transaction-forms">
+                <form id="incomeForm">
+                    <h3><i class="fa-solid fa-arrow-trend-up"></i> Adicionar Receita</h3>
+                    <input type="number" step="0.01" id="incomeValue" placeholder="Valor" required>
+                    <input type="date" id="incomeDate" required>
+                    <input type="text" id="incomeDesc" placeholder="Descrição">
+                    <select id="incomeCategory">
+                        <option value="">Categoria (opcional)</option>
+                        <option value="Investimento">Investimento</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                    <button type="submit"><i class="fa-solid fa-plus"></i> Adicionar Receita</button>
+                </form>
+                <form id="expenseForm">
+                    <h3><i class="fa-solid fa-arrow-trend-down"></i> Adicionar Despesa</h3>
+                    <input type="number" step="0.01" id="expenseValue" placeholder="Valor" required>
+                    <input type="date" id="expenseDate" required>
+                    <input type="text" id="expenseDesc" placeholder="Descrição">
+                    <select id="expenseCategory" required>
+                        <option value="">Selecione a categoria</option>
+                        <option value="Comida">Comida</option>
+                        <option value="Transporte">Transporte</option>
+                        <option value="Entretenimento">Entretenimento</option>
+                        <option value="Compras Parceladas">Compras Parceladas</option>
+                        <option value="Dívidas">Dívidas</option>
+                        <option value="Investimento">Investimento</option>
+                        <option value="Contas Fixas">Contas Fixas</option>
+                        <option value="Despesas Imprevistas">Despesas Imprevistas</option>
+                    </select>
+                    <button type="submit"><i class="fa-solid fa-plus"></i> Adicionar Despesa</button>
+                </form>
+            </div>
+            <div id="transactionList">
+                <!-- Lista de transações renderizada via JS -->
+            </div>
+        </section>
+        <section id="charts">
+            <h2><i class="fa-solid fa-chart-bar"></i> Gráficos</h2>
+            <canvas id="categoryChart"></canvas>
+            <canvas id="monthlyChart"></canvas>
+        </section>
+        <section id="goals">
+            <h2><i class="fa-solid fa-bullseye"></i> Metas de Orçamento</h2>
+            <form id="goalForm">
+                <input type="number" step="0.01" id="goalValue" placeholder="Limite mensal de despesas" required>
+                <button type="submit">Definir Meta</button>
+            </form>
+            <p id="goalValueDisplay" style="font-weight:bold;color:#1976d2;"></p>
+            <p id="goalAlert"></p>
+        </section>
+        <section id="export">
+            <h2><i class="fa-solid fa-file-export"></i> Exportação e Backup</h2>
+            <button id="exportCSV"><i class="fa-solid fa-file-csv"></i> Exportar CSV</button>
+            <button id="exportExcel"><i class="fa-solid fa-file-excel"></i> Exportar Excel</button>
+            <button id="exportPDF"><i class="fa-solid fa-file-pdf"></i> Exportar PDF</button>
+            <button id="backupData"><i class="fa-solid fa-download"></i> Download Backup</button>
+
+            <!-- Botão de teste temporário -->
+            <button onclick="exportPDFSimple()" style="background: #6c757d; margin-top: 10px;">
+                <i class="fa-solid fa-print"></i> PDF Alternativo (Impressão)
+            </button>
+        </section>
+    </main>
+    <script src="js/auth.js"></script>
+    <script src="js/summary.js"></script>
+    <script src="js/transactions.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/goals.js"></script>
+    <script src="js/export.js"></script>
+    <script>
+        // Carregar dados do usuário no dashboard
+        document.addEventListener('DOMContentLoaded', function () {
+            loadUserProfile();
+
+            // Debug: verificar se os botões de export estão funcionando
+            console.log('Dashboard carregado, verificando botões de export...');
+            const exportPDF = document.getElementById('exportPDF');
+            if (exportPDF) {
+                console.log('Botão PDF encontrado:', exportPDF);
+                console.log('Event listener configurado:', exportPDF.onclick ? 'Sim' : 'Não');
+            }
+        });
+    </script>
+</body>
+
+</html>
