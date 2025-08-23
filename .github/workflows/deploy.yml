@@ -1,0 +1,44 @@
+name: Build, Test and Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress tests and generate report
+        run: |
+          npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports,overwrite=false,html=true,json=true
+
+      - name: Gerar relatório customizado dos testes
+        run: node scripts/generateTestReport.js
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Copiar relatório para pasta de publicação
+        run: |
+          mkdir -p dist/report
+          cp cypress/reports/custom_report.html dist/report/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist

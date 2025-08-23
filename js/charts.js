@@ -201,6 +201,6 @@ if (document.getElementById('categoryChart') && document.getElementById('monthly
     }
 }
 
-window.addEventListener('resize', function() {
+window.addEventListener('resize', function () {
     renderCharts();
 });

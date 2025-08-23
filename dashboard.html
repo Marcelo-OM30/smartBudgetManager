@@ -18,7 +18,7 @@
     <header>
         <div class="user-profile">
             <img id="userPhoto"
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjUiIGN5PSIyNSIgcj0iMjUiIGZpbGw9IiNlMGU3ZWYiLz4KPHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDEyQzE0LjIwOTEgMTIgMTYgMTAuMjA5MSAxNiA4QzE2IDUuNzkwODYgMTQuMjA5MSA0IDEyIDRDOS43OTA4NiA0IDggNS43OTA4NiA4IDhDOCAxMC4yMDkxIDkuNzkwODYgMTIgMTIgMTJaIiBmaWxsPSIjNDQ0Ii8+CjxwYXRoIGQ9Ik0xMiAxNEM5LjMzIDEzLjk4IDYuNjcgMTQuMjEgNSAxNS4zM0M0LjMgMTUuNzEgNCAxNi41IDQgMTcuMzNWMjBIMjBWMTcuMzNDMjAgMTYuNSAxOS43IDE1LjcxIDE5IDE1LjMzQzE3LjMzIDE0LjIxIDE0LjY3IDEzLjk4IDEyIDE0WiIgZmlsbD0iIzQ0NCIvPgo8L3N2Zz4KPC9zdmc+"
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjUiIGN5PSIyNSIgcj0iMjUiIGZpbGw9IiNlMGU3ZWYiLz4KPHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1zbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDEyQzE0LjIwOTEgMTIgMTYgMTAuMjA5MSAxNiA4QzE2IDUuNzkwODYgMTQuMjA5MSA0IDEyIDRDOS43OTA4NiA0IDggNS43OTA4NiA4IDhDOCAxMC4yMDkxIDkuNzkwODYgMTIgMTIgMTJaIiBmaWxsPSIjNDQ0Ii8+CjxwYXRoIGQ9Ik0xMiAxNEM5LjMzIDEzLjk4IDYuNjcgMTQuMjEgNSAxNS4zM0M0LjMgMTUuNzEgNCAxNi41IDQgMTcuMzNWMjBIMjBWMTcuMzNDMjAgMTYuNSAxOS43IDE1LjcxIDE5IDE1LjMzQzE3LjMzIDE0LjIxIDE0LjY3IDEzLjk4IDEyIDE0WiIgZmlsbD0iIzQ0NCIvPgo8L3N2Zz4KPC9zdmc+"
                 alt="Foto do usuário">
             <div>
                 <h1><i class="fa-solid fa-wallet"></i> Smart Budget Manager</h1>
@@ -62,8 +62,8 @@
             <div class="transaction-forms">
                 <form id="incomeForm">
                     <h3><i class="fa-solid fa-arrow-trend-up"></i> Adicionar Receita</h3>
-                    <input type="number" step="0.01" id="incomeValue" placeholder="Valor" required>
-                    <input type="date" id="incomeDate" required>
+                    <input type="number" step="0.01" id="incomeValue" placeholder="Valor">
+                    <input type="date" id="incomeDate">
                     <input type="text" id="incomeDesc" placeholder="Descrição">
                     <select id="incomeCategory">
                         <option value="">Categoria (opcional)</option>
@@ -74,10 +74,10 @@
                 </form>
                 <form id="expenseForm">
                     <h3><i class="fa-solid fa-arrow-trend-down"></i> Adicionar Despesa</h3>
-                    <input type="number" step="0.01" id="expenseValue" placeholder="Valor" required>
-                    <input type="date" id="expenseDate" required>
+                    <input type="number" step="0.01" id="expenseValue" placeholder="Valor">
+                    <input type="date" id="expenseDate">
                     <input type="text" id="expenseDesc" placeholder="Descrição">
-                    <select id="expenseCategory" required>
+                    <select id="expenseCategory">
                         <option value="">Selecione a categoria</option>
                         <option value="Comida">Comida</option>
                         <option value="Transporte">Transporte</option>
@@ -122,6 +122,24 @@
             </button>
         </section>
     </main>
+    <div id="toast"
+        style="display:none;position:fixed;top:20px;right:20px;z-index:9999;background:#4caf50;color:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.2);font-size:16px;">
+        Login realizado com sucesso</div>
+    <div id="toastReceita"
+        style="display:none;position:fixed;top:60px;right:20px;z-index:9999;background:#2196f3;color:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.2);font-size:16px;">
+        Receita registrada com sucesso</div>
+    <div id="toastDespesa"
+        style="display:none;position:fixed;top:100px;right:20px;z-index:9999;background:#ff9800;color:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.2);font-size:16px;">
+        Despesa registrada com sucesso</div>
+    <div id="toastExportCSV"
+        style="display:none;position:fixed;top:140px;right:20px;z-index:9999;background:#4caf50;color:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.2);font-size:16px;">
+        Exportação CSV realizada com sucesso</div>
+    <div id="toastExportExcel"
+        style="display:none;position:fixed;top:180px;right:20px;z-index:9999;background:#388e3c;color:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.2);font-size:16px;">
+        Exportação Excel realizada com sucesso</div>
+    <div id="toastExportPDF"
+        style="display:none;position:fixed;top:220px;right:20px;z-index:9999;background:#d32f2f;color:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.2);font-size:16px;">
+        Exportação PDF realizada com sucesso</div>
     <script src="js/auth.js"></script>
     <script src="js/summary.js"></script>
     <script src="js/transactions.js"></script>
@@ -129,10 +147,19 @@
     <script src="js/goals.js"></script>
     <script src="js/export.js"></script>
     <script>
-        // Carregar dados do usuário no dashboard
         document.addEventListener('DOMContentLoaded', function () {
+            // Exibir nome e foto do usuário logado
+            const userData = JSON.parse(localStorage.getItem('currentUserData') || '{}');
+            const userGreeting = document.getElementById('userGreeting');
+            if (userGreeting && userData.name) {
+                userGreeting.textContent = `Olá, ${userData.name}!`;
+            }
+            const userPhoto = document.getElementById('userPhoto');
+            if (userPhoto && userData.photo) {
+                userPhoto.src = userData.photo;
+            }
+            // Carregar dados do usuário no dashboard
             loadUserProfile();
-
             // Debug: verificar se os botões de export estão funcionando
             console.log('Dashboard carregado, verificando botões de export...');
             const exportPDF = document.getElementById('exportPDF');

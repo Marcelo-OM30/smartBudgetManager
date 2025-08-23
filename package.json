@@ -1,0 +1,16 @@
+{
+    "name": "smartBudgetManager",
+    "version": "1.0.0",
+    "scripts": {
+        "cypress:open": "cypress open",
+        "cypress:run": "cypress run",
+        "cypress:run:spec": "cypress run --spec cypress/e2e/smartBudgetManager.spec.js"
+    },
+    "devDependencies": {
+        "cypress": "^13.0.0",
+        "cypress-mochawesome-reporter": "^4.0.2",
+        "mochawesome": "^7.1.3",
+        "mochawesome-merge": "^5.0.0",
+        "mochawesome-report-generator": "^6.2.0"
+    }
+}

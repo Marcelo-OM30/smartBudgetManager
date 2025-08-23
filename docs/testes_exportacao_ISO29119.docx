@@ -1,0 +1,46 @@
+Especificação de Casos de Teste - Exportação Smart Budget Manager
+
+1. Identificação do Documento
+- Nome: Especificação de Casos de Teste - Exportação Smart Budget Manager
+- Base: ISO/IEC/IEEE 29119-3
+- Data: 22/08/2025
+- Autor: Marcelo-OM30
+
+2. Introdução
+Este documento descreve os casos de teste para validação das funcionalidades de exportação de dados financeiros para CSV, Excel e PDF.
+
+3. Casos de Teste
+
+3.1 Caso de Teste: Exportar para CSV
+ID: CT-004.1
+Objetivo: Validar a exportação dos dados para CSV.
+Pré-condição: Usuário logado na dashboard.
+Procedimento:
+  1. Clicar no botão "Exportar CSV" (#exportCSV)
+  2. Verificar a mensagem de sucesso "Exportação CSV realizada com sucesso"
+Resultado Esperado: Mensagem de sucesso exibida.
+
+3.2 Caso de Teste: Exportar para Excel
+ID: CT-004.2
+Objetivo: Validar a exportação dos dados para Excel.
+Pré-condição: Usuário logado na dashboard.
+Procedimento:
+  1. Clicar no botão "Exportar Excel" (#exportExcel)
+  2. Verificar a mensagem de sucesso "Exportação Excel realizada com sucesso"
+Resultado Esperado: Mensagem de sucesso exibida.
+
+3.3 Caso de Teste: Exportar para PDF
+ID: CT-004.3
+Objetivo: Validar a exportação dos dados para PDF.
+Pré-condição: Usuário logado na dashboard.
+Procedimento:
+  1. Clicar no botão "Exportar PDF" (#exportPDF)
+  2. Verificar a mensagem de sucesso "Exportação PDF realizada com sucesso"
+Resultado Esperado: Mensagem de sucesso exibida.
+
+4. Critérios de Aceitação
+- Mensagens de sucesso devem ser exibidas após cada exportação.
+- Toast/banner deve aparecer na dashboard confirmando a exportação.
+
+5. Rastreabilidade
+- Requisitos cobertos: Exportação de dados financeiros para CSV, Excel e PDF.

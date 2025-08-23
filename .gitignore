@@ -1,0 +1,18 @@
+# Ignorar arquivos de ambiente e credenciais
+cypress.env.json
+.env
+.env.*
+# Ignorar relatórios gerados
+cypress/reports/*.json
+cypress/reports/*.html
+cypress/reports/*.xml
+cypress/reports/*.pdf
+cypress/reports/*.xlsx
+cypress/reports/*.csv
+# Ignorar pastas de build e dependências
+node_modules/
+dist/
+build/
+# Ignorar arquivos temporários
+*.log
+*.tmp

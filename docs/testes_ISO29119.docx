@@ -1,0 +1,64 @@
+Especificação de Casos de Teste - Smart Budget Manager
+
+1. Identificação do Documento
+- Nome: Especificação de Casos de Teste - Smart Budget Manager
+- Base: ISO/IEC/IEEE 29119-3
+- Data: 22/08/2025
+- Autor: Marcelo-OM30
+
+2. Introdução
+Este documento descreve os casos de teste para validação das funcionalidades de registro de receitas e despesas, conforme os cenários automatizados em Cypress e descritos em Gherkin.
+
+3. Casos de Teste
+
+3.1 Caso de Teste: Registrar Receita
+ID: CT-001
+Objetivo: Validar o registro de receitas com diferentes valores, datas, descrições e categorias.
+Pré-condição: Usuário logado no sistema.
+Procedimento:
+  1. Informar valor <valor>
+  2. Informar data <data>
+  3. Informar descrição <descricao>
+  4. Informar categoria <categoria>
+  5. Submeter o registro
+Resultado Esperado: <resultado>
+
+| valor | data       | descricao     | categoria    | resultado                                         |
+|-------|------------|---------------|--------------|---------------------------------------------------|
+| 100   | 2025-08-20 | Salario       | Investimento | Receita registrada                                |
+| -50   | 2025-08-20 | Salario       | Investimento | O valor da receita deve ser positivo.             |
+| 100   | 1920-08-20 | Salario       | Outros       | Receita registrada                                |
+| 100   | 2025-08-20 | Salario123    | Investimento | Descrição deve ter até 200 caracteres e conter apenas letras. |
+
+3.2 Caso de Teste: Registrar Despesa
+ID: CT-002
+Objetivo: Validar o registro de despesa com dados válidos.
+Pré-condição: Usuário logado no sistema.
+Procedimento:
+  1. Informar valor: 50
+  2. Informar data: 2025-08-22
+  3. Informar descrição: Mercado
+  4. Informar categoria: Alimentação
+  5. Submeter o registro
+Resultado Esperado: Despesa registrada com sucesso
+
+3.3 Caso de Teste: Validações de Campos Obrigatórios
+ID: CT-003
+Objetivo: Garantir que campos obrigatórios sejam validados.
+Pré-condição: Usuário logado no sistema.
+
+CT-003.1 Não permitir receita com valor negativo
+Procedimento: Informar valor -10, data 2025-08-22, descrição Teste, submeter registro.
+Resultado Esperado: O valor da receita deve ser positivo.
+
+CT-003.2 Não permitir despesa sem categoria
+Procedimento: Informar valor 50, data 2025-08-22, descrição Teste, não informar categoria, submeter registro.
+Resultado Esperado: O campo "Categoria" não pode ficar em branco.
+
+4. Critérios de Aceitação
+- Mensagens de sucesso e erro devem ser exibidas conforme esperado.
+- Toast/banner de sucesso deve aparecer após registros válidos.
+- Campos obrigatórios e formatos devem ser validados.
+
+5. Rastreabilidade
+- Requisitos cobertos: Registro de receitas, registro de despesas, validação de campos obrigatórios.

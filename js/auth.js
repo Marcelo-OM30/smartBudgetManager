@@ -39,6 +39,7 @@ function loginUser(email, password) {
             localStorage.setItem('loggedUser', email);
             // Salvar dados do usuário para uso no dashboard
             localStorage.setItem('currentUserData', JSON.stringify(userData));
+            localStorage.setItem('showLoginSuccess', 'true');
             window.location.href = 'dashboard.html';
         } else {
             alert('Senha incorreta!');
