@@ -16,6 +16,5 @@
 | RQ09 | Resumo Financeiro                | O sistema deve apresentar um resumo com total de receitas, despesas e saldo atual.               |
 | RQ10 | Gráficos e Análises              | O sistema deve gerar gráficos de distribuição por categoria e evolução mensal das finanças.      |
 | RQ11 | Metas de Orçamento               | O usuário deve poder definir um limite mensal de despesas e receber alertas quando estiver próximo ou acima do limite. |
-| RQ11A | Alertas de Orçamento | O sistema deve alertar o usuário quando as despesas estiverem próximas do limite definido (ex: acima de 90% do valor da meta) e também quando ultrapassarem o limite. |
 | RQ12 | Exportação de Dados              | O sistema deve permitir exportar as transações em formato CSV e PDF.                            |
 | RQ13 | Backup de Dados                  | O sistema deve oferecer opção de download de todos os dados para backup.                        |
