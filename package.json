@@ -4,7 +4,8 @@
     "scripts": {
         "cypress:open": "cypress open",
         "cypress:run": "cypress run",
-        "cypress:run:spec": "cypress run --spec cypress/e2e/smartBudgetManager.spec.js"
+        "cypress:run:spec": "cypress run --spec cypress/e2e/smartBudgetManager.spec.js",
+        "start": "npx serve . --port 8000"
     },
     "devDependencies": {
         "cypress": "^13.0.0",
